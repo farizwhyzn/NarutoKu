@@ -9,20 +9,4 @@ data class CharacterSearchResultsApiModel(
     val name: String?,
     @SerializedName("images")
     val images: List<String?>?,
-    @SerializedName("personal")
-    val personal: PersonalSearchResults?,
-    @SerializedName("debut")
-    val debut: DebutSearchResults?,
-)
-
-data class PersonalSearchResults(
-    @SerializedName("occupation")
-    val occupation: String?,
-    @SerializedName("affiliation")
-    val affiliation: List<String?>?,
-)
-
-data class DebutSearchResults(
-    @SerializedName("anime")
-    val anime: String?
 )

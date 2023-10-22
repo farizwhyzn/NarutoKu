@@ -19,11 +19,6 @@ class CharacterMapper @Inject constructor() : Mapper<CharactersApiModel, List<Ch
                 id = characterApiModel.id!!,
                 name = characterApiModel.name.orEmpty(),
                 images = characterApiModel.images.orEmpty(),
-                personal = Personal(
-                    affiliation = characterApiModel.personal?.affiliation,
-                    occupation = characterApiModel.personal?.occupation
-                ),
-                debut = Debut(anime = characterApiModel.debut?.anime),
             )
         }
     }

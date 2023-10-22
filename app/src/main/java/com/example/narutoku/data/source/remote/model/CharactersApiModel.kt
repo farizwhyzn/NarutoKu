@@ -14,20 +14,4 @@ data class CharacterApiModel(
     val name: String?,
     @SerializedName("images")
     val images: List<String?>?,
-    @SerializedName("personal")
-    val personal: Personal?,
-    @SerializedName("debut")
-    val debut: Debut?,
-)
-
-data class Personal(
-    @SerializedName("occupation")
-    val occupation: String?,
-    @SerializedName("affiliation")
-    val affiliation: List<String?>?,
-    )
-
-data class Debut(
-    @SerializedName("anime")
-    val anime: String?
 )

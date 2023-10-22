@@ -12,12 +12,12 @@ data class CharacterDetailApiModel(
     @SerializedName("jutsu")
     val jutsu: List<String>?,
     @SerializedName("personal")
-    val personal: PersonalDetail?,
+    val personal: Personal?,
     @SerializedName("debut")
-    val debut: DebutDetail?,
+    val debut: Debut?,
 )
 
-data class PersonalDetail(
+data class Personal(
     @SerializedName("birthdate")
     val birthDate: String?,
     @SerializedName("sex")
@@ -32,7 +32,7 @@ data class PersonalDetail(
     val clan: String?,
 )
 
-data class DebutDetail(
+data class Debut(
     @SerializedName("anime")
     val anime: String?
 )

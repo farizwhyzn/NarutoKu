@@ -7,8 +7,8 @@ class CharacterLocalDataSource(private val favoriteCharacterDao: FavoriteCharact
     fun getFavoriteCharacters(): Flow<List<FavoriteCharacter>> {
         return favoriteCharacterDao.getFavoriteCharacters()
     }
-    fun isCharacterFavorite(charactedId: String): Flow<Boolean> {
-        return favoriteCharacterDao.isCharacterFavorite(charactedId = charactedId)
+    fun isCharacterFavorite(characterId: String): Flow<Boolean> {
+        return favoriteCharacterDao.isCharacterFavorite(characterId = characterId)
     }
     suspend fun insert(favoriteCharacter: FavoriteCharacter) {
         favoriteCharacterDao.insert(favoriteCharacter)
