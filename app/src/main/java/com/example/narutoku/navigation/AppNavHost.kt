@@ -6,7 +6,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.narutoku.ui.screen.detail.CharacterDetailScreen
 import com.example.narutoku.ui.screen.list.CharacterListScreen
+import com.example.narutoku.ui.screen.search.CharacterSearchScreen
 
 @Composable
 fun AppNavHost(
@@ -21,11 +23,11 @@ fun AppNavHost(
         composable(route = Screen.CharacterList.route) {
             CharacterListScreen(navController = navController)
         }
-//        composable(route = Screen.CharacterDetail.route + "/{characterId}") {
-//            CharacterDetailScreen(navController = navController)
-//        }
-//        composable(route = Screen.CharacterSearch.route) {
-//            CharacterSearchScreen(navController = navController)
-//        }
+        composable(route = Screen.CharacterDetail.route + "/{characterId}") {
+            CharacterDetailScreen(navController = navController)
+        }
+        composable(route = Screen.CharacterSearch.route) {
+            CharacterSearchScreen(navController = navController)
+        }
     }
 }
