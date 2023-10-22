@@ -162,7 +162,7 @@ private fun CharacterListTopBar(
     TopAppBar(
         title = {
             Text(
-                text = "Test",
+                text = "NarutoKu",
                 style = MaterialTheme.typography.titleMedium,
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.offset(x = (-4).dp)
@@ -231,7 +231,7 @@ private fun CharacterListContent(
                 }
             }
 
-            Spacer(Modifier.height(24.dp))
+            Spacer(Modifier.height(12.dp))
 
             Text(
                 text = "Characters",

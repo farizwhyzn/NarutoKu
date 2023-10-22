@@ -1,5 +1,6 @@
 package com.example.narutoku.ui.screen.detail
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.ArrowBack
@@ -27,9 +29,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -39,6 +44,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
+import com.example.narutoku.R
 import com.example.narutoku.model.CharacterDetail
 import com.example.narutoku.ui.component.ErrorState
 import com.example.narutoku.ui.screen.detail.component.CharacterDetailSkeletonLoader
@@ -140,25 +146,45 @@ private fun CharacterDetailTopBar(
                         overflow = TextOverflow.Ellipsis
                     )
 
-                    Text(
-                        text = characterDetail.name,
-                        style = MaterialTheme.typography.titleSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+                    if (characterDetail.personal?.affiliation?.get(0).isNullOrEmpty()) {
+                        Text(
+                            text = "No nation",
+                            style = MaterialTheme.typography.titleSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    } else {
+                        Text(
+                            text = characterDetail.personal?.affiliation?.get(0)!!,
+                            style = MaterialTheme.typography.titleSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
                 }
+
                 if (characterDetail.images?.size == 0) {
-//                Image()
+                    Image(
+                        painterResource(id = R.drawable.blank_profile_picture),
+                        contentDescription = "no photo",
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(60.dp)
+                            .clip(CircleShape),
+                    )
                 } else {
                     AsyncImage(
                         model = imageBuilder
                             .data(characterDetail.images?.get(0))
                             .build(),
                         contentDescription = null,
+                        contentScale = ContentScale.Crop,
                         modifier = Modifier
                             .padding(horizontal = 12.dp)
-                            .size(44.dp)
+                            .size(60.dp)
+                            .clip(CircleShape)
                     )
                 }
             }
@@ -197,9 +223,94 @@ private fun CharacterDetailContent(
             .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
             .testTag("character_detail_content")
     ) {
+
         Text(
-            text = "text 1",
+            text = "Personal details",
             style = MaterialTheme.typography.titleMedium
         )
+
+        if (characterDetail.personal?.sex.isNullOrEmpty()) {
+            Text(
+                text = "Sex: -",
+            )
+        } else {
+            Text(
+                text = "Sex: " + characterDetail.personal?.sex!!,
+            )
+        }
+
+        if (characterDetail.personal?.birthDate.isNullOrEmpty()) {
+            Text(
+                text = "Birth Date: -",
+            )
+        } else {
+            Text(
+                text = "Birth Date: " + characterDetail.personal?.birthDate!!,
+            )
+        }
+
+        if (characterDetail.personal?.status.isNullOrEmpty()) {
+            Text(
+                text = "Status: -",
+            )
+        } else {
+            Text(
+                text = "Status: " + characterDetail.personal?.status!!,
+            )
+        }
+
+        if (characterDetail.personal?.clan.isNullOrEmpty()) {
+            Text(
+                text = "Clan: -",
+            )
+        } else {
+            Text(
+                text = "Clan: " + characterDetail.personal?.clan!!,
+            )
+        }
+
+        if (characterDetail.personal?.occupation.isNullOrEmpty()) {
+            Text(
+                text = "Occupation: -",
+            )
+        } else {
+            Text(
+                text = "Occupation: " + characterDetail.personal?.occupation!!,
+            )
+        }
+        Spacer(Modifier.height(8.dp))
+
+        Text(
+            text = "Debut Episode",
+            style = MaterialTheme.typography.titleMedium
+        )
+
+        if (characterDetail.debut?.anime.isNullOrEmpty()) {
+            Text(
+                text = "-",
+            )
+        } else {
+            Text(
+                text = characterDetail.debut?.anime?.get(0).toString(),
+            )
+        }
+        Spacer(Modifier.height(8.dp))
+
+        Text(
+            text = "Jutsu",
+            style = MaterialTheme.typography.titleMedium
+        )
+
+        if (characterDetail.jutsu?.size == 0) {
+            Text(
+                text = "-",
+            )
+        } else {
+            for (jutsuItem in characterDetail.jutsu!!) {
+                Text(
+                    text = jutsuItem.toString(),
+                )
+            }
+        }
     }
 }
