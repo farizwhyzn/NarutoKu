@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface CharacterApi {
     @GET("character")
     suspend fun getCharacters(
-        @Query("limit") limit: String = "100"
+        @Query("limit") limit: String = "2000"
     ): Response<CharactersApiModel>
 
     @GET("character/{characterId}")
