@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.narutoku.common.Result
 import com.example.narutoku.domain.GetCharactersUseCase
+import com.example.narutoku.domain.GetFavoriteCharactersUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CharacterListViewModel @Inject constructor(
     private val getCharactersUseCase: GetCharactersUseCase,
-    private val getFavoriteCharactersUseCase: GetCharactersUseCase
+    private val getFavoriteCharactersUseCase: GetFavoriteCharactersUseCase
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<CharacterListUiState>(CharacterListUiState.Loading)
     val uiState = _uiState.asStateFlow()
