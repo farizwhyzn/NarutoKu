@@ -69,42 +69,44 @@ private fun SkeletonTopAppBar(modifier: Modifier = Modifier) {
 @Composable
 private fun SkeletonContent(modifier: Modifier = Modifier) {
     Column(modifier = modifier.padding(horizontal = 12.dp)) {
-        SkeletonSurface(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(374.dp)
-        )
-
-        Spacer(Modifier.height(24.dp))
 
         Text(
-            text = "text 1",
+            text = "Personal details",
+            style = MaterialTheme.typography.titleMedium
+        )
+
+        Text(
+            text = "Sex:"
+        )
+
+        Text(
+            text = "Birth Date:",
+        )
+
+        Text(
+            text = "Status:",
+        )
+
+        Text(
+            text = "Clan:",
+        )
+
+        Text(
+            text = "Occupation:",
+        )
+
+        Spacer(Modifier.height(8.dp))
+
+        Text(
+            text = "Debut Episode",
             style = MaterialTheme.typography.titleMedium
         )
 
         Spacer(Modifier.height(8.dp))
 
-        SkeletonSurface(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(91.dp)
-        )
-
-        Spacer(Modifier.height(24.dp))
-
         Text(
-            text = "text 2",
+            text = "Jutsu",
             style = MaterialTheme.typography.titleMedium
-        )
-
-        Spacer(Modifier.height(8.dp))
-
-        SkeletonSurface(
-            shape = MaterialTheme.shapes.medium.copy(
-                bottomStart = CornerSize(0.dp),
-                bottomEnd = CornerSize(0.dp)
-            ),
-            modifier = Modifier.fillMaxSize()
         )
     }
 }
