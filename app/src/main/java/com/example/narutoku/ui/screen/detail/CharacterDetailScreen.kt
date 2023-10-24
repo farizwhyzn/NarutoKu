@@ -291,7 +291,7 @@ private fun CharacterDetailContent(
             )
         } else {
             Text(
-                text = characterDetail.debut?.anime?.get(0).toString(),
+                text = characterDetail.debut?.anime.toString(),
             )
         }
         Spacer(Modifier.height(8.dp))

@@ -60,7 +60,7 @@ fun CharacterListItem(
                     contentDescription = "no photo",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(128.dp)
+                        .size(100.dp)
                         .clip(CircleShape),
                 )
             } else {
@@ -70,7 +70,7 @@ fun CharacterListItem(
                         .build(),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
-                        .size(128.dp)
+                        .size(100.dp)
                         .clip(CircleShape),
                     contentDescription = null
                 )
@@ -81,7 +81,7 @@ fun CharacterListItem(
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = character.name,
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.bodyLarge,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
